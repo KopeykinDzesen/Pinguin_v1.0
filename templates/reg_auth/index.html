@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pinguin</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'reg_auth/css/reg_auth.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'reg_auth/css/modal_windows.css' %}" type="text/css">
+
+    <script defer src="{% static 'fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js' %}"></script>
+
+</head>
+<body>
+
+<div class="main-wrapper">
+
+        <div class="left-half">
+
+            <div class="slider">
+
+                <div class="slide">
+                    <div class="slide-img">
+                        <img src="{% static 'img/Get_support.png' %}">
+                    </div>
+                    <div class="slide-text">
+                        <h3>Get support</h3>
+                        <p>Welcome to <b>Pinguin</b> a safe place to share how you fell</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-img">
+                        <img src="{% static 'img/Chat_with_friends.png' %}">
+                    </div>
+                    <div class="slide-text">
+                        <h3>Chat with friends</h3>
+                        <p>Welcome to <b>Pinguin</b> a quiet pace to communicate</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-img">
+                        <img src="{% static 'img/Spread_love.png' %}">
+                    </div>
+                    <div class="slide-text">
+                        <h3>Spread love</h3>
+                        <p>Welcome to <b>Pinguin</b> a wonderful place to find your one and only</p>
+                    </div>
+                </div>
+
+            </div><!--carousel-wrapper-->
+
+        </div><!--left-half-->
+
+        <div class="right-half">
+
+            <div class="logo">
+                Pinguin<img src="{% static 'img/penguin.png' %}">
+            </div>
+
+            <div class="reg-auth-block">
+
+                <ul class="nav-forms">
+                    <li id="signin_btn"><a>SIGN IN</a></li>
+                    <li id="signup_btn"><a>SIGN UP</a></li>
+                    <span id="menu_underline"></span>
+                </ul>
+
+                <form class="form-main form-signin" action="" method="post">{% csrf_token %}
+
+                    <div class="field-wrapper">
+                        <label>Email</label>
+                        <input type="text" name="" required autocomplete="off">
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Password</label>
+                        <input type="password" name="" required autocomplete="off">
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+
+                    <div class="field-wrapper-checkbox">
+                        <input class="input-checkbox" id="input_checkbox1" type="checkbox">
+                        <label class="label-checkbox" for="input_checkbox1">Keep my Signed In</label>
+                    </div>
+
+                    <div class="field-wrapper">
+                        <button class="btn-submit-form" type="submit">SIGN IN</button>
+                    </div>
+
+                    <hr id="line">
+
+                    <div class="forgot-password">
+                        <a href="{% url 'reg_auth:reg_auth' %}">Forgot password?</a>
+                    </div>
+
+                </form>
+
+                <form class="form-main form-signup" action="{% url 'reg_auth:registration' %}" method="post">{% csrf_token %}
+
+                    <div class="field-wrapper">
+                        <label>Email</label>
+                        <input id="in_signup_email" type="text" name="{{ form.email.html_name }}" required autocomplete="off" value="{{ email }}">
+                        <span class="check-icon"><i class="fas fa-check"></i></span>
+                        <input class="input-validate" id="signup_email_validate" type="text" value="no_validate" name="{{ form.email_validate.html_name }}">
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Password</label>
+                        <input id="in_signup_password" type="password" name="{{ form.password.html_name }}" required autocomplete="off" value="{{ password }}">
+                        <span class="check-icon"><i class="fas fa-check"></i></span>
+                        <input class="input-validate" id="signup_password_validate" type="text" value="no_validate" name="{{ form.password_validate.html_name }}">
+                    </div>
+
+                    <div class="field-wrapper">
+                        <label>Confirm password</label>
+                        <input id="in_signup_con_password" type="password" name="{{ form.confirm_password.html_name }}" required autocomplete="off" value="{{ confirm_password }}">
+                        <span class="check-icon"><i class="fas fa-check"></i></span>
+                        <input class="input-validate" id="signup_confirm_password_validate" type="text" value="no_validate" name="{{ form.confirm_password_validate.html_name }}">
+                    </div>
+
+                    <div class="field-wrapper">
+                        <button class="btn-submit-form" type="submit">SIGN UP</button>
+                        <div id="form_error_main">{{ form.errors }}</div>
+                        <div id="form_error">{{ form.errors }}</div>
+                    </div>
+
+                </form>
+
+            </div><!--reg-auth-block-->
+
+        </div>
+
+        </div><!--right-half-->
+
+</div><!--main-wrapper-->
+
+<!--modal-forms-->
+{% if is_create_user %}
+<div class="modal-form" id="modal_confirmation_email">
+    <span class="modal-close"><i class="fas fa-times"></i></span>
+    <p>
+        <h4>Спасибо за регистрацию!</h4>
+        Проверьте пожалуйста свою почту для подтверждения Email.
+    </p>
+</div>
+<div class="overlay"></div>
+{% endif %}
+
+<script src="{% static 'js/jquery-3.2.1.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/slick.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'reg_auth/js/reg_auth.js' %}" type="text/javascript"></script>
+<script src="{% static 'reg_auth/js/modal_windows.js' %}" type="text/javascript"></script>
+
+</body>
+</html>
