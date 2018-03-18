@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'la(ozy9%7js0^)b*hxyxsf(*lvrdxa521&)g0c0g2!sk7l!5if'
+SECRET_KEY = 'there isn\'t it'
 
 DEBUG = True
 
