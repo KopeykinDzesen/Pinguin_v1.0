@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var url_registration = 'http://127.0.0.1:8035/reg_auth/registration/'
+    var url_registration = 'http://127.0.0.1:8036/reg_auth/registration/'
 
 //---------------------------------------
 
@@ -155,7 +155,7 @@ $(document).ready(function(){
 //---------------------------------------
 
     var error_form = $('.nonfield li');
-    $('#form_error').html(error_form.html());
+    $('.form_error').html(error_form.html());
 
 //---------------------------------------
 

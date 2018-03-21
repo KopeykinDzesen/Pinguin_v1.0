@@ -84,7 +84,7 @@ def authentication(request):
 
     return render(request, 'reg_auth/index.html', locals())
 
-# def forgot_password(request):
-#
-#     return render(request, )
+def forgot_password(request):
+
+    return render(request, 'reg_auth/index.html', locals())
 

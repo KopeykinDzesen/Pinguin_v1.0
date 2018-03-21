@@ -317,11 +317,11 @@ input:focus {
     text-decoration: none;
 }
 
-#form_error_main {
+.form_error_main {
     display: none;
 }
 
-#form_error {
+.form_error {
     margin: 0;
     padding: 0;
     position: absolute;
@@ -335,7 +335,7 @@ input:focus {
 
 @media screen and (max-width: 1000px){
     .main-wrapper {
-        height: auto;
+        height: 100%;
     }
     .left-half {
         height: 100%;
