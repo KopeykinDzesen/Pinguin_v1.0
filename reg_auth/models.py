@@ -7,6 +7,7 @@ class UserData(models.Model):
     password = models.CharField(max_length=32)
     created_data = models.DateTimeField()
     email_confirm_key = models.CharField(max_length=20, blank=True, null=True)
+    remember_me = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
         return "Email: {}, Data: {}.".format(self.email, self.created_data)

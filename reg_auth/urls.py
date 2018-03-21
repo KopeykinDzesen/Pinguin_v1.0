@@ -7,5 +7,7 @@ app_name = 'reg_auth'
 urlpatterns = [
     path('', views.reg_auth, name='reg_auth'),
     path('registration/', views.registration, name='registration'),
-    path('<email>/<key>', views.confirm_email, name='confirm_email'),
+    path('authentication/', views.authentication, name='authentication'),
+    path('<email>/<key>/', views.confirm_email, name='confirm_email'),
+    path('forgot_password/', views.forgot_password, name='forgot_password'),
 ]

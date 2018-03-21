@@ -85,27 +85,29 @@
                     <span id="menu_underline"></span>
                 </ul>
 
-                <form class="form-main form-signin" action="" method="post">{% csrf_token %}
+                <form class="form-main form-signin" action="{% url 'reg_auth:authentication' %}" method="post">{% csrf_token %}
 
                     <div class="field-wrapper">
                         <label>Email</label>
-                        <input type="text" name="" required autocomplete="off">
-                        <i class="fas fa-check check-icon"></i>
+                        <input id="in_signin_email" type="text" name="{{ signin_form.email.html_name }}"  required autocomplete="off" value="{{ email }}">
+                        <span class="check-icon"><i class="fas fa-check"></i></span>
                     </div>
 
                     <div class="field-wrapper">
                         <label>Password</label>
-                        <input type="password" name="" required autocomplete="off">
-                        <i class="fas fa-check check-icon"></i>
+                        <input id="in_signin_password" type="password" name="{{ signin_form.password.html_name }}" required autocomplete="off">
+                        <span class="check-icon"><i class="fas fa-check"></i></span>
                     </div>
 
                     <div class="field-wrapper-checkbox">
-                        <input class="input-checkbox" id="input_checkbox1" type="checkbox">
+                        <input id="in_signin_checkbox" class="input-checkbox" type="checkbox" name="{{ signin_form.remember_me.html_name }}">
                         <label class="label-checkbox" for="input_checkbox1">Keep my Signed In</label>
                     </div>
 
                     <div class="field-wrapper">
                         <button class="btn-submit-form" type="submit">SIGN IN</button>
+                        <div id="form_error_main">{{ signin_form.errors }}</div>
+                        <div id="form_error">{{ signin_form.errors }}</div>
                     </div>
 
                     <hr id="line">
@@ -120,29 +122,29 @@
 
                     <div class="field-wrapper">
                         <label>Email</label>
-                        <input id="in_signup_email" type="text" name="{{ form.email.html_name }}" required autocomplete="off" value="{{ email }}">
+                        <input id="in_signup_email" type="text" name="{{ signup_form.email.html_name }}" required autocomplete="off" value="{{ email }}">
                         <span class="check-icon"><i class="fas fa-check"></i></span>
-                        <input class="input-validate" id="signup_email_validate" type="text" value="no_validate" name="{{ form.email_validate.html_name }}">
+                        <input class="input-validate" id="signup_email_validate" type="text" value="no_validate" name="{{ signup_form.email_validate.html_name }}">
                     </div>
 
                     <div class="field-wrapper">
                         <label>Password</label>
-                        <input id="in_signup_password" type="password" name="{{ form.password.html_name }}" required autocomplete="off" value="{{ password }}">
+                        <input id="in_signup_password" type="password" name="{{ signup_form.password.html_name }}" required autocomplete="off" value="{{ password }}">
                         <span class="check-icon"><i class="fas fa-check"></i></span>
-                        <input class="input-validate" id="signup_password_validate" type="text" value="no_validate" name="{{ form.password_validate.html_name }}">
+                        <input class="input-validate" id="signup_password_validate" type="text" value="no_validate" name="{{ signup_form.password_validate.html_name }}">
                     </div>
 
                     <div class="field-wrapper">
                         <label>Confirm password</label>
-                        <input id="in_signup_con_password" type="password" name="{{ form.confirm_password.html_name }}" required autocomplete="off" value="{{ confirm_password }}">
+                        <input id="in_signup_con_password" type="password" name="{{ signup_form.confirm_password.html_name }}" required autocomplete="off" value="{{ confirm_password }}">
                         <span class="check-icon"><i class="fas fa-check"></i></span>
-                        <input class="input-validate" id="signup_confirm_password_validate" type="text" value="no_validate" name="{{ form.confirm_password_validate.html_name }}">
+                        <input class="input-validate" id="signup_confirm_password_validate" type="text" value="no_validate" name="{{ signup_form.confirm_password_validate.html_name }}">
                     </div>
 
                     <div class="field-wrapper">
                         <button class="btn-submit-form" type="submit">SIGN UP</button>
-                        <div id="form_error_main">{{ form.errors }}</div>
-                        <div id="form_error">{{ form.errors }}</div>
+                        <div id="form_error_main">{{ signup_form.errors }}</div>
+                        <div id="form_error">{{ signup_form.errors }}</div>
                     </div>
 
                 </form>
@@ -172,6 +174,15 @@
 <script src="{% static 'js/slick.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'reg_auth/js/reg_auth.js' %}" type="text/javascript"></script>
 <script src="{% static 'reg_auth/js/modal_windows.js' %}" type="text/javascript"></script>
+{% if is_create_user %}
+<script src="{% static 'reg_auth/js/clear_form.js' %}" type="text/javascript"></script>
+{% endif %}
+{% if not is_auth %}
+<script src="{% static 'reg_auth/js/not_auth.js' %}" type="text/javascript"></script>
+{% endif %}
+{% if error_code == 'email_error' %}
+<script src="{% static 'reg_auth/js/clear_email_field.js' %}" type="text/javascript"></script>
+{% endif %}
 
 </body>
 </html>

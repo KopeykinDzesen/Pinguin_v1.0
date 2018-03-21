@@ -297,6 +297,10 @@ input:focus {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+.btn-submit-form:focus {
+    outline: none;
+}
+
 #line {
     height: 1px;
     width: 310px;

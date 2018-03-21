@@ -4,25 +4,26 @@ from django.core.mail import EmailMessage
 
 from . import special_func
 from .models import UserData
-from .forms import SignUpForm
+from .forms import SignUpForm, SignInForm
 
 
 def reg_auth(request):
-    form = SignUpForm()
+    signup_form = SignUpForm()
+    signin_form = SignInForm()
+    is_auth = True
     return render(request, 'reg_auth/index.html', locals())
 
 
 def registration(request):
+    signup_form = SignUpForm()
 
     if request.method == 'POST':
-        form = SignUpForm(request.POST or None)
-
-        print(form.errors)
+        signup_form = SignUpForm(request.POST or None)
 
         data = request.POST
         is_create_user = False
 
-        if form.is_valid():
+        if signup_form.is_valid():
 
             email = data['email']
             password = data['password']
@@ -63,4 +64,27 @@ def confirm_email(request, email, key):
 
     return render(request, 'user_page.html', locals())
 
+
+def authentication(request):
+    signin_form = SignInForm()
+    is_auth = True
+
+    if request.method == 'POST':
+        signin_form = SignInForm(request.POST or None)
+
+        data = request.POST
+        email = data['email']
+
+        if signin_form.is_valid():
+            user = UserData.objects.get(email=email)
+            return render(request, 'user_page.html', locals())
+        else:
+            is_auth = False
+            error_code = signin_form.errors['__all__'].as_data()[0].code
+
+    return render(request, 'reg_auth/index.html', locals())
+
+# def forgot_password(request):
+#
+#     return render(request, )
 
